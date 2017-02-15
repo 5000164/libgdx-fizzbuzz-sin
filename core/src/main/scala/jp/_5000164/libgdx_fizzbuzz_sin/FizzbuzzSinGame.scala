@@ -15,6 +15,7 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
   lazy val camera = new OrthographicCamera()
   camera.setToOrtho(false, 800, 480)
   lazy val shapeRenderer = new ShapeRenderer()
+  var renderCount = 0
 
   override def render(delta: Float) {
     Gdx.gl.glClearColor(0, 0, 0, 1)
@@ -25,16 +26,18 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     shapeRenderer.setProjectionMatrix(camera.combined)
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
 
-    var base_y = 0.0
+    var base_y = renderCount.toDouble / 10
 
-    for (i <- 1 to 100) {
-      val x = i * 10
+    for (i <- 1 to 1024) {
+      val x = i * 1
       val y = ((sin(base_y) * 200) + 240).toInt
-      shapeRenderer.rect(x.toFloat, y.toFloat, 4f, 4f)
-      base_y += 0.25
+      shapeRenderer.rect(x.toFloat, y.toFloat, 1f, 1f)
+      base_y += 0.025
     }
 
     shapeRenderer.end()
+
+    renderCount += 1
   }
 
 
