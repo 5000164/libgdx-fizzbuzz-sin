@@ -26,13 +26,14 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     shapeRenderer.setProjectionMatrix(camera.combined)
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
 
-    var base_y = renderCount.toDouble / 10
+    val base_x = renderCount.toDouble * 5
+    var base_y = 0.0
 
     for (i <- 1 to 1024) {
-      val x = i * 1
+      val x = (i * 50) - base_x
       val y = ((sin(base_y) * 200) + 240).toInt
       shapeRenderer.rect(x.toFloat, y.toFloat, 1f, 1f)
-      base_y += 0.025
+      base_y += 0.25
     }
 
     shapeRenderer.end()
