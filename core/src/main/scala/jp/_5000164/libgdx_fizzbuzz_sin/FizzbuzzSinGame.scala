@@ -32,7 +32,12 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     for (i <- 1 to 1024) {
       val x = (i * 50) - base_x
       val y = ((sin(base_y) * 200) + 240).toInt
-      shapeRenderer.rect(x.toFloat, y.toFloat, 1f, 1f)
+      i match {
+        case j if j % 15 == 0 => shapeRenderer.rect(x.toFloat - 15f, y.toFloat - 15f, 30f, 30f)
+        case j if j % 3 == 0 => shapeRenderer.rect(x.toFloat - 3f, y.toFloat - 3f, 6f, 6f)
+        case j if j % 5 == 0 => shapeRenderer.rect(x.toFloat - 5f, y.toFloat - 5f, 10f, 10f)
+        case _ => shapeRenderer.rect(x.toFloat, y.toFloat, 1f, 1f)
+      }
       base_y += 0.25
     }
 
