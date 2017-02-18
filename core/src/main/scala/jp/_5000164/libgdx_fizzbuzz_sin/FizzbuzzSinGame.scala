@@ -6,6 +6,9 @@ import com.badlogic.gdx.{Game, Gdx, Screen}
 import scala.math.sin
 
 class FizzbuzzSinGame extends Game {
+  val centerX: Float = 400
+  val centerY: Float = 240
+
   override def create() {
     setScreen(new TitleScreen(this))
   }
@@ -21,7 +24,7 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     Gdx.gl.glClearColor(0, 0, 0, 1)
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-    camera.position.set((400 + (renderCount * 5)).toFloat, 240.toFloat, 0)
+    camera.position.set(game.centerX + (renderCount * 5), game.centerY, 0)
     camera.update()
 
     shapeRenderer.setProjectionMatrix(camera.combined)
@@ -30,7 +33,7 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     var base_y = 0.0
     for (i <- 1 to 1024) {
       val x = i * 50
-      val y = ((sin(base_y) * 200) + 240).toInt
+      val y = ((sin(base_y) * 200) + game.centerY).toInt
       i match {
         case j if j % 15 == 0 => shapeRenderer.rect(x.toFloat - 15f, y.toFloat - 15f, 30f, 30f)
         case j if j % 3 == 0 => shapeRenderer.rect(x.toFloat - 3f, y.toFloat - 3f, 6f, 6f)
