@@ -6,6 +6,8 @@ import com.badlogic.gdx.{Game, Gdx, Screen}
 import scala.math.sin
 
 class FizzbuzzSinGame extends Game {
+  val windowWidth: Float = 800
+  val windowHeight: Float = 480
   val centerX: Float = 400
   val centerY: Float = 240
 
@@ -16,7 +18,7 @@ class FizzbuzzSinGame extends Game {
 
 class TitleScreen(game: FizzbuzzSinGame) extends Screen {
   lazy val camera = new OrthographicCamera()
-  camera.setToOrtho(false, 800, 480)
+  camera.setToOrtho(false, game.windowWidth, game.windowHeight)
   lazy val shapeRenderer = new ShapeRenderer()
   var renderCount = 0
 
