@@ -21,16 +21,15 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     Gdx.gl.glClearColor(0, 0, 0, 1)
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
+    camera.position.set((400 + (renderCount * 5)).toFloat, 240.toFloat, 0)
     camera.update()
 
     shapeRenderer.setProjectionMatrix(camera.combined)
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled)
 
-    val base_x = renderCount.toDouble * 5
     var base_y = 0.0
-
     for (i <- 1 to 1024) {
-      val x = (i * 50) - base_x
+      val x = i * 50
       val y = ((sin(base_y) * 200) + 240).toInt
       i match {
         case j if j % 15 == 0 => shapeRenderer.rect(x.toFloat - 15f, y.toFloat - 15f, 30f, 30f)
