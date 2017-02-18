@@ -50,7 +50,6 @@ class TitleScreen(game: FizzbuzzSinGame) extends Screen {
     renderCount += 1
   }
 
-
   override def resize(width: Int, height: Int) {}
 
   override def show() {}
